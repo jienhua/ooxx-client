@@ -1,0 +1,83 @@
+.test{
+	background-color: blue;
+}
+
+.board {
+	background-color: #966F33;
+}
+
+.square {
+	width: 100px;
+	height: 100px;
+	background-color: white;
+	opacity: 0.7;
+	margin:7px;
+	padding: 20px;
+	-webkit-transition: background-color .2s ease;
+	-moz-transition: background-color .2s ease;
+	-o-transition: background-color .2s ease;
+	-ms-transition: background-color .2s ease;
+	transition: background-color .2s ease;
+}
+
+.circle{
+	border: 10px solid black;
+	border-radius: 50%;
+	-webkit-box-shadow: 0 0 1px 0px rgb( 255, 255, 255);
+	box-shadow: 0 0 1px 0px rgb(255, 255, 255);
+	width: 100%;
+	height: 100%;
+	z-index: 100px;
+}
+
+.hover{
+	opacity: 0.4;
+}
+
+.x {
+	height: 100px;
+	width: 100px;
+	background-color: white;
+}
+
+.x > i{
+	width: 100%;
+	margin-left: 10%;
+	font-size: 100px;
+	color: black;
+
+}
+
+.cross {
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+/*css x  = \00d7*/
+.cross:before, .cross:after{
+	content:"";
+	position: absolute;
+	z-index: -1;
+	background: black;
+}
+
+.cross:before {
+	left:55%;
+	width: 20%;
+	margin-left: -15%;
+	height: 100%;
+	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg); 
+    transform: rotate(45deg);
+}
+
+.cross:after {
+  	top: 55%;
+  	height: 20%;
+  	margin-top: -15%;
+  	width: 100%;
+  	-ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg); 
+    transform: rotate(45deg);
+}
