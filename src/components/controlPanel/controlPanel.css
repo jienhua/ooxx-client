@@ -1,0 +1,25 @@
+.controlPanel{
+	border: 1px solid black;
+}
+
+.col {
+	background-color: red;
+}
+
+.button {
+	/*border: 1px solid black;*/
+	width: 100px;
+	height: 50px;
+	/*display: inline-block;*/
+	margin: 5px;
+	text-align: center;
+	vertical-align: middle;
+	/*line-height: 50px;  */
+	border-radius: 10px;
+	/*background-color: #4285F4;*/
+	/*color:white; */
+}
+
+.press {
+	background-color: #0d47a1;
+}
