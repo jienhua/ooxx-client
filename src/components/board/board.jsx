@@ -22,7 +22,9 @@ class Board extends Component{
 	put(e){
 		
 		const number = e.target.id.split('-')[1]
-		if(this.isYourTurn()){
+		const table = this.getBoard().toJS()
+
+		if(this.isYourTurn() && table[parseInt(number/3)][parseInt(number%3)]===-1){
 			this.props.place(number)
 		}
 	}
@@ -46,6 +48,10 @@ class Board extends Component{
 	}
 
 	isYourTurn(){
+
+		if(this.props.winner){
+			return false
+		}
 		let turn = this.props.turns%2 
 		if(this.props.startPlayer ===1){
 			if(turn !== this.props.piece ){

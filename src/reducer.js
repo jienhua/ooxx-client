@@ -13,6 +13,8 @@ function setPiece(state, piece){
 
 function reset(state){
 	return state.remove('startPlayer')
+				.remove('winner')
+				.remove('choosePiece')
 }
 
 export default function(state = Map(), action){

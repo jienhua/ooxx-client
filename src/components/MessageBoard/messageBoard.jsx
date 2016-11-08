@@ -40,7 +40,6 @@ class messageBoard extends Component {
 					<br/>
 					<h4>You are select: {this.props.piece ===0?
 											'O':'X'}</h4>
-					{this.props.startPlayer}
 				</div>
 			)
 		}

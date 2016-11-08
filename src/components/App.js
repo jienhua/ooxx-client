@@ -27,6 +27,7 @@ class App extends Component {
 	    					turns={this.props.turns}
 	    					startPlayer={this.props.startPlayer}
 	    					piece={this.props.piece}
+	    					winner={this.props.winner}
 	    				/>}
 	    				{/*console.log(this.props.board)*/}
 	    			</Col>
