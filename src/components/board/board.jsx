@@ -12,31 +12,51 @@ class Board extends Component{
 		this.showAbleToMove = this.showAbleToMove.bind(this)
 		this.hideAbleToMove = this.hideAbleToMove.bind(this)
 		this.getBoard = this.getBoard.bind(this)
+		this.isYourTurn = this.isYourTurn.bind(this)
 	}
 
 	getBoard(){
-		// console.log(this.props.board)
 		return this.props.board || [];
 	}
 
 	put(e){
 		
 		const number = e.target.id.split('-')[1]
-		this.props.place(number)
+		if(this.isYourTurn()){
+			this.props.place(number)
+		}
 	}
 
 	showAbleToMove(e){
 		
-		if(e.target.children[0].className === ''){
-		   e.target.children[0].className = [styles.circle, styles.hover].join(' ')
+		if(e.target.children[0].className === '' && this.isYourTurn()){
+			if(this.props.piece === 0){
+		   		e.target.children[0].className = [styles.circle, styles.hover].join(' ')
+			}else{
+				e.target.children[0].className = [styles.x, styles.hover].join(' ')
+			}
 		}
 	}
 
 	hideAbleToMove(e){
 
 		if(e.target.children[0].classList.contains(styles.hover)){
-			e.target.children[0].classList.remove(styles.circle, styles.hover)
+			e.target.children[0].classList.remove(styles.circle, styles.x, styles.hover)
 		}
+	}
+
+	isYourTurn(){
+		let turn = this.props.turns%2 
+		if(this.props.startPlayer ===1){
+			if(turn !== this.props.piece ){
+				return true
+			}
+		}else if(this.props.startPlayer ===0){
+			if(turn === this.props.piece)
+				return true
+		}
+
+		return false
 	}
 
 	render() {

@@ -20,3 +20,18 @@ export function reset(){
 		type: 'RESET'
 	}
 }
+
+export function setPiece(piece){
+	return {
+		type: 'SET_PIECE',
+		piece
+	}
+}
+
+export function start(){
+
+	return {
+		meta: {remote: true},
+		type: 'START'
+	}
+}

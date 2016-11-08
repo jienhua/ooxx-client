@@ -21,12 +21,28 @@ class App extends Component {
 	    	<div className='container'>
 	    		<Row>
 	    			<Col sm={6}>
-	    				<Board board={this.props.board} place={this.props.place}/>
+	    				{<Board 
+	    					board={this.props.board} 
+	    					place={this.props.place}
+	    					turns={this.props.turns}
+	    					startPlayer={this.props.startPlayer}
+	    					piece={this.props.piece}
+	    				/>}
 	    				{/*console.log(this.props.board)*/}
 	    			</Col>
 	    			<Col sm={6}>
-	    				<MessageBoard winner={this.props.winner} turns={this.props.turns} />
-	    				<ControlPanel reset={this.props.reset}/>
+	    				<MessageBoard 
+	    					winner={this.props.winner} 
+	    					turns={this.props.turns} 
+	    					piece={this.props.piece}
+	    					startPlayer={this.props.startPlayer}
+	    				/>
+	    				<ControlPanel 
+	    					reset={this.props.reset} 
+	    					setPiece={this.props.setPiece}
+	    					start={this.props.start}
+	    					startPlayer={this.props.startPlayer}
+	    				/>
 	    			</Col>
 	    		</Row>		
 	    	</div>
@@ -39,7 +55,9 @@ function mapStateToProps(state) {
 	return {
 		board: state.get('board'),
 		turns: state.get('turns'),
-		winner: state.get('winner')
+		winner: state.get('winner'),
+		startPlayer: state.get('startPlayer'),
+		piece: state.get('choosePiece')
 	}
 }
 

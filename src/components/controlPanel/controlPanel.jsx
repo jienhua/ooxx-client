@@ -9,43 +9,33 @@ class controlPanel extends Component {
 
 	constructor(){
 		super()
-		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-		this.selectCircle = this.selectCircle.bind(this)
-		this.selectX = this.selectX.bind(this)
-		this.start = this.start.bind(this)
-		this.reset = this.reset.bind(this)
+		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+		this.isDisabled = this.isDisabled.bind(this)
 	}
 
-	selectCircle(){
-		console.log('circle')
-	}
+	isDisabled(){
 
-	selectX(){
-		console.log('x')
-	}
-
-	start(){
-		console.log('start')
-	}
-
-	reset(){
-		this.props.reset();
+		if(this.props.startPlayer === undefined ){
+			return false
+		}else{
+			return true
+		}
 	}
 
 	render() {
 		return (
 			<div className={styles.controlPanel}>			
 				<div>
-					<Button id='white' 
+					<Button id='circle' 
 							className={styles.button} 
 							bsStyle="primary"
-							onClick={this.selectCircle}>
+							onClick={() => this.props.setPiece(0)}>
 						<i className='fa fa-circle-o fa-3x' ></i>
 					</Button> 
 					<Button id='black' 
 							className={styles.button} 
 							bsStyle="primary"
-							onClick={this.selectX}>
+							onClick={() => this.props.setPiece(1)}>
 						<i className='fa fa-times fa-3x'></i>
 					</Button> 
 				</div>
@@ -53,13 +43,14 @@ class controlPanel extends Component {
 					<Button id='start' 
 							className={styles.button} 
 							bsStyle="primary"
-							onClick={this.start}>
+							disabled={this.isDisabled()}
+							onClick={() => this.props.start()}>
 						<strong>Start</strong>
 					</Button> 
 					<Button id='reset' 
 							className={styles.button} 
 							bsStyle="primary"
-							onClick={this.reset}>
+							onClick={() => this.props.reset()}>
 						<strong>Reset</strong>
 					</Button> 
 				</div>
