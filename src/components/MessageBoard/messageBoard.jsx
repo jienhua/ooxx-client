@@ -8,6 +8,7 @@ class messageBoard extends Component {
 		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 		this.showMessage = this.showMessage.bind(this)
 		this.getTurn = this.getTurn.bind(this)
+		this.getPiece = this.getPiece.bind(this)
 	}
 
 	getTurn(){
@@ -28,18 +29,27 @@ class messageBoard extends Component {
 		return 'Waiting to start'
 	}
 
+	getPiece(){
+		if(this.props.piece !== undefined){
+			if(this.props.piece === 0){
+				return 'O'
+			}else{
+				return 'X'
+			}
+		}
+	}
+
 	showMessage(){
-		if(this.props.winner){
+		if(this.props.winner !== undefined){
 			return (<h1>The winner is {this.props.winner === 0?
-										'O':'X'}</h1>)
+												'O':'X'}</h1>)
 		}else{
 			return (
 				<div>
 					<p>{this.getTurn()}
 					</p>
 					<br/>
-					<h4>You are select: {this.props.piece ===0?
-											'O':'X'}</h4>
+					<h4>You are select: {this.getPiece()}</h4>
 				</div>
 			)
 		}
